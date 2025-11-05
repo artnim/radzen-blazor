@@ -19,7 +19,7 @@
         @if (sideDialogOptions.Resizable)
         {
             <div @ref="sideDialogResizeHandle"
-                 class="@GetResizBarCssClass()"
+                 class="@GetResizeBarCssClass()"
                  data-dir="@(sideDialogOptions.Position switch
                            {
                                DialogPosition.Left => "left",
@@ -101,7 +101,7 @@
     Dialog sideDialog;
     ElementReference? sideDialogResizeHandle;
     ElementReference? sideDialogHandle;
-    IJSObjectReference sideDialogResizeHandleJsModule;
+    IJSObjectReference? sideDialogResizeHandleJsModule;
 
     public async Task Open(string title, Type type, Dictionary<string, object> parameters, DialogOptions options)
     {
@@ -238,7 +238,7 @@
                                                .Add("rz-close", sideDialogClosing)
                                                .ToString();
 
-    string GetResizBarCssClass() => ClassList.Create("rz-dialog-resize-bar")
+    string GetResizeBarCssClass() => ClassList.Create("rz-dialog-resize-bar")
                                                .ToString();
 
     string GetSideDialogStyle()
